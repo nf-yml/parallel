@@ -31,4 +31,9 @@ sleepy time:
 nextflow run nf-yml/parallel --in test.yml
 ```
 
-The output of individual processes can be found in the `work/` directory created by the Nextflow process.
+By default, the logs from individual commands will be written to `nf-yml-logs`.
+You can change that to another directory, e.g., `mylogs`, with
+
+``` bash
+nextflow run nf-yml/parallel --in test.yml --logs mylogs
+```
