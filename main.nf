@@ -1,11 +1,19 @@
 import org.yaml.snakeyaml.Yaml
 
+// Default parameters
+params.logs = './nf-yml-logs'
+
 process worker{
   tag "${sp.name}"
   container "${sp.environment}"
+  publishDir "${params.logs}", mode: 'move',
+    saveAs: { fn -> "${sp.name}.log" }
 
   input:
     val(sp)
+
+  output:
+    path('.command.log')
 
   """
   ${sp.command}
@@ -21,6 +29,7 @@ workflow {
     v
   }
 
+  // Run each command in parallel
   channel.from(specs) | worker
 }
 
