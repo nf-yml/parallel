@@ -1,0 +1,4 @@
+process1:
+  command: echo Hello World
+process2:
+  command: sleep 5
