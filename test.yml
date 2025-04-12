@@ -1,4 +1,14 @@
-process1:
+# Execute this command inside the ubuntu container
+greet:
   command: echo Hello World
-process2:
+  environment: ubuntu:latest
+
+# Execute this command inside the python container
+maths:
+  command: python -c "print(2+2)"
+  environment: python:latest
+
+# When an environment is not provided, command execution will be local
+# i.e., in the same environment as the head Nextflow process
+sleepy time:
   command: sleep 5
